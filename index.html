@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <img src="loading-screen.png" alt="Loading Screen" class="loading-bg">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Play Tab Container -->
+        <div id="play-tab" class="tab-container">
+            <div class="tab-header">
+                <div class="header-left">
+                    <img src="profile.svg" alt="Profile Icon" class="profile-icon">
+                    <span class="username">PlayerName</span>
+                </div>
+                <div class="header-right">
+                    <img src="small-coin.svg" alt="Coin Icon" class="coin-icon">
+                    <span id="coin-count" class="coin-count">0</span>
+                </div>
+            </div>
+            <div class="tab-content">
+                <div class="coin-container">
+                    <img src="large-coin.svg" alt="Large Coin" class="large-coin" id="large-coin">
+                </div>
+                <div class="energy-container">
+                    <span class="energy-text">ENERGY</span>
+                    <div class="energy-bar">
+                        <div class="energy-fill" id="energy-bar"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Boost Tab Container -->
+        <div id="boost-tab" class="tab-container">
+    <div class="tab-header">
+        <div class="coin-balance">
+            <span class="coin-balance-text">Coin Balance</span>
+            <div class="coin-balance-icon">
+                <img src="small-coin.svg" alt="Coin Icon" class="coin-icon">
+                <span class="coin-balance-amount">1,337,589</span>
+            </div>
+        </div>
+    </div>
+    <div class="tab-content">
+        <div class="boost-container">
+        <!-- Header 1: Free Daily Boosters -->
+        <div class="content-section">
+            <h2 class="section-header">Free Daily Boosters</h2>
+            <div class="button-group">
+                <button class="single-button">
+                    <img src="energy-icon.svg" alt="Energy Icon" class="button-icon">
+                    <span>Give Pepe full energy (5/5)</span>
+                </button>
+                <button class="single-button">
+                    <img src="small-coin.svg" alt="Coin Icon" class="button-icon">
+                    <span>Triple Coin Tap (1/1)</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Header 2: Boosters -->
+        <div class="content-section">
+            <h2 class="section-header">Boosters</h2>
+            <div class="button-group">
+                <button class="double-button">
+                    <div class="button-left">
+                        <img src="multitap-icon.svg" alt="Multitap Icon" class="button-icon">
+                        <span>Multitap</span>
+                    </div>
+                    <div class="button-right">
+                        <img src="small-coin.svg" alt="Coin Icon" class="button-icon-small">
+                        <span>2K / 1lvl</span>
+                    </div>
+                </button>
+                <button class="double-button">
+                    <div class="button-left">
+                        <img src="energy-icon.svg" alt="Energy Icon" class="button-icon">
+                        <span>Energy Limit</span>
+                    </div>
+                    <div class="button-right">
+                        <img src="small-coin.svg" alt="Coin Icon" class="button-icon-small">
+                        <span>10K / +1000</span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+</div></div>
+
+
+        <!-- Earn Tab Container -->
+<div id="earn-tab" class="tab-container">
+    <div class="tab-header">
+        <div class="header-icon">
+            <img src="large-coin.svg" alt="Large Coin" class="large-icon"><br>
+            <span class="header-text">Get more coins</span>
+        </div>
+    </div>
+    <div class="tab-content">
+        <div class="earn-container">
+        <div class="content-section">            
+            <h2 class="section-header">Youtube quests</h2>
+            <div class="button-group">
+                <button class="double-button">
+                    <div class="button-left">
+                        <img src="youtube.svg" alt="YouTube Icon" class="button-icon">
+                        <span>Pepe on TON introduction</span>
+                    </div>
+                    <div class="button-right">
+                        <img src="small-coin.svg" alt="Coin Icon" class="button-icon-small">
+                        <span>+100,000</span>
+                    </div>
+                </button>
+                <button class="double-button">
+                    <div class="button-left">
+                        <img src="youtube.svg" alt="YouTube Icon" class="button-icon">
+                        <span>How to connect a ton wallet</span>
+                    </div>
+                    <div class="button-right">
+                        <img src="small-coin.svg" alt="Coin Icon" class="button-icon-small">
+                        <span>+100,000</span>
+                    </div>
+                </button>
+                <button class="double-button">
+                    <div class="button-left">
+                        <img src="youtube.svg" alt="YouTube Icon" class="button-icon">
+                        <span>Blockchain Crash Course</span>
+                    </div>
+                    <div class="button-right">
+                        <img src="small-coin.svg" alt="Coin Icon" class="button-icon-small">
+                        <span>+100,000</span>
+                    </div>
+                </button>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-header">Daily rewards</h2>
+            <div class="button-group">
+                <button class="double-button">
+                    <div class="button-left">
+                        <img src="small-coin.svg" alt="Coin Icon" class="button-icon">
+                        <span>Daily Bonus</span>
+                    </div>
+                    <div class="button-right">
+                        <img src="small-coin.svg" alt="Coin Icon" class="button-icon-small">
+                        <span>5,000,000</span>
+                    </div>
+                </button>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-header">Tasks List</h2>
+            <div class="button-group">
+                <button class="double-button">
+                    <div class="button-left">
+                        <img src="telegram.svg" alt="Telegram Icon" class="button-icon">
+                        <span>Join our Telegram channel</span>
+                    </div>
+                    <div class="button-right">
+                        <img src="small-coin.svg" alt="Coin Icon" class="button-icon-small">
+                        <span>500,000</span>
+                    </div>
+                </button>
+                <button class="double-button">
+                    <div class="button-left">
+                        <img src="x.svg" alt="X Icon" class="button-icon">
+                        <span>Follow our X account</span>
+                    </div>
+                    <div class="button-right">
+                        <img src="small-coin.svg" alt="Coin Icon" class="button-icon-small">
+                        <span>500,000</span>
+                    </div>
+                </button>
+                <button class="double-button">
+                    <div class="button-left">
+                        <img src="ton.svg" alt="TON Icon" class="button-icon">
+                        <span>Connect a TON wallet</span>
+                    </div>
+                    <div class="button-right">
+                        <img src="small-coin.svg" alt="Coin Icon" class="button-icon-small">
+                        <span>500,000</span>
+                    </div>
+                </button>
+                <button class="double-button">
+                    <div class="button-left">
+                        <img src="friends.svg" alt="Friends Icon" class="button-icon">
+                        <span>Invite 3 friends</span>
+                    </div>
+                    <div class="button-right">
+                        <img src="small-coin.svg" alt="Coin Icon" class="button-icon-small">
+                        <span>500,000</span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+</div></div>
+
+
+        <div id="wallet-tab" class="tab-container">
+    <div class="tab-header">
+        <div class="header-icon">
+            <img src="large-coin.svg" alt="Large Coin Icon" class="large-icon">
+            <div class="header-text">Connect a TON wallet</div>
+        </div>
+    </div>
+    <div class="tab-content">
+        <div class="earn-container">
+        <div class="content-section">
+            <div class="section-header">
+                Make sure you connect your TON wallet to be ready for the PEPE on TON airdrop in the future
+            </div>
+            <div class="button-group">
+                <div class="double-button">
+                    <div class="button-left">
+                        <img src="ton.svg" alt="TON Icon" class="button-icon">
+                        Connect a TON wallet
+                    </div>
+                    <div class="button-right">
+                        <img src="cog.svg" alt="Cog Icon" class="button-icon">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div></div>
+
+        <!-- Menu -->
+        <div class="menu">
+            <div class="menu-tab active" onclick="showTab('play-tab')">PLAY</div>
+            <div class="menu-tab" onclick="showTab('boost-tab')">BOOST</div>
+            <div class="menu-tab" onclick="showTab('earn-tab')">EARN</div>
+            <div class="menu-tab" onclick="showTab('wallet-tab')">WALLET</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,489 @@
+@font-face {
+    font-family: 'Pepeonton';
+    src: url('Pepeonton.ttf') format('truetype');
+}
+
+body {
+    margin: 0;
+    font-family: 'Pepeonton', sans-serif;
+    color: white; /* Default text color for the game */
+    font-size: 14px; /* Default text size for the game */
+}
+
+.loading-screen {
+    position: fixed; /* Fullscreen loading screen */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000; /* Background color for loading screen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it covers the whole screen */
+}
+
+.loading-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.spinner {
+    border: 8px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top: 8px solid #fff;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.main-container {
+    width: 100%;
+    height: 100vh;
+    background: url('background.svg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding-top: 100px; /* Padding for header */
+    padding-bottom: 50px; /* Space for menu */
+}
+
+.tab-container {
+    display: none; /* Hide all tab containers by default */
+    position: relative; /* Ensure positioning context for fixed header */
+}
+
+.tab-container.active {
+    display: block; /* Show active tab container */
+}
+
+.tab-header {
+    position: fixed; /* Fix the header at the top */
+    top: 0;
+    left: 0;
+    width: 100%; /* Full width */
+    /* height: 100px;*/ /* Fixed height */
+    background: transparent; /* Make the header transparent */
+    box-sizing: border-box;
+    z-index: 1000; /* Ensure it stays on top */
+    padding: 20px; /* Padding inside the header */
+    color: white; /* Header text color */
+    font-size: 14px; /* Header text size */
+    font-weight: normal; /* Normal text weight */
+    display: flex;
+    justify-content: space-between; /* Space between header content */
+    align-items: center; /* Align items vertically */
+}
+
+
+/* Boost Tab Content Styles */
+.coin-balance {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.coin-balance-text {
+    font-size: 16px; /* Size for the "Coin Balance" text */
+    margin-bottom: 5px; /* Space between text and icon */
+    align-content: center;
+}
+
+.coin-balance-icon {
+    display: flex;
+    align-items: center;
+}
+
+.coin-icon {
+    width: 36px; /* Size for the coin icon */
+    height: 36px;
+    margin-right: 5px; /* Space between icon and text */
+}
+
+.coin-balance-amount {
+    font-size: 36px; /* Font size for the coin amount */
+    color: #fff; /* Text color to match the theme */
+    font-weight: bold;
+}
+
+/* Header Left (Profile) */
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.profile-icon {
+    width: 50px; /* Adjust size as needed */
+    height: 50px;
+    border-radius: 50%; /* Circular profile icon */
+    margin-right: 10px;
+}
+
+.username {
+    font-size: 14px; /* Adjust font size as needed */
+    font-weight: bold; /* Normal text weight */
+}
+
+/* Header Right (Coins Counter) */
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.coin-icon {
+    width: 50px; /* Adjust size as needed */
+    height: 50px;
+    margin-right: 5px;
+}
+
+.coin-count {
+    font-size: 14px; /* Adjust font size as needed */
+    font-weight: bold; /* Normal text weight */
+}
+
+/* Menu Styles */
+.menu {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #0c0c0c; /* Menu background color */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); /* Optional: add shadow */
+    position: fixed; /* Fix the menu at the bottom */
+    bottom: 0;
+    left: 0;
+    height: 50px; /* Set the height of the menu */
+    margin: 0; /* Remove margins */
+    padding: 0; /* Remove padding */
+    box-sizing: border-box;
+}
+
+.menu-tab {
+    flex: 1; /* Equal space for each tab */
+    text-align: center;
+    line-height: 50px; /* Center text vertically */
+    color: #fff; /* Text color */
+    font-size: 14px; /* Font size */
+    font-weight: normal; /* Normal font weight */
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+    background: transparent; /* Default background */
+}
+
+.menu-tab:hover {
+    background: rgba(255, 255, 255, 0.2); /* Light background on hover */
+    color: #ff0; /* Highlight color on hover */
+}
+
+.menu-tab.active {
+    background: #000000; /* Active tab background color */
+    color: #fff; /* Active tab text color */
+}
+
+/* Coin Container */
+.coin-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 150px - 50px - 30px); /* Full height minus header and menu */
+}
+
+.large-coin {
+    height: 220px;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6); /* Default drop shadow */
+    border-radius: 50%; /* Ensure it's a circle */
+}
+
+.large-coin:active {
+    transform: scale(0.9); /* Shrink when tapped */
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.9); /* White outer glow on tap */
+}
+
+/* Energy Container */
+.energy-container {
+    text-align: center;
+
+}
+
+/* Energy Text */
+.energy-text {
+    font-size: 14px; /* Font size for energy label */
+    font-weight: bold; /* Bold text for emphasis */
+    margin-bottom: 10px;
+}
+
+/* Energy Bar */
+.energy-bar {
+    width: 100%; /* Full width of container */
+    height: 20px; /* Height of the energy bar */
+    background: #333; /* Background color for the bar */
+    border-radius: 10px; /* Rounded corners */
+    overflow: hidden; /* Hide overflow to maintain rounded corners */
+    position: relative;
+    margin-top:10px;
+}
+
+/* Energy Fill */
+.energy-fill {
+    height: 100%; /* Full height of the container */
+    background: #00ff00; /* Green color for the energy fill */
+    width: 100%; /* Initial width set to full */
+    transition: width 0.3s ease; /* Smooth transition effect */
+}
+
+.tab-content {
+    padding: 20px;
+    align-items: center;
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+#boost-tab .tab-header {
+    justify-content: center;
+}
+
+/* Boost Content Section Styles */
+.content-section {
+    margin-bottom: 20px; /* Space between sections */
+    width: 100%;
+}
+
+.section-header {
+    font-size: 16px; /* Size for headers */
+    color: white; /* White text color */
+    font-weight: bold; /* Bold text */
+    margin-bottom: 20px; /* Space below the header */
+}
+
+/* Button Group Styles */
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between buttons */
+}
+
+/* Single Button Styles */
+.single-button {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    background: rgba(255, 255, 255, 0.1); /* White background with 90% transparency */
+    border: 1px solid black; /* Black border */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Black drop shadow */
+    padding: 15px 15px; /* Padding inside the button */
+    font-size: 14px; /* Font size for button text */
+    color: white; /* Text color */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 10px; /* Rounded corners */
+    font-family: Pepeonton;
+}
+
+.single-button .button-icon {
+    width: 20px; /* Size of the icon */
+    height: 20px;
+    margin-right: 10px; /* Space between icon and text */
+}
+
+/* Double Button Styles */
+.double-button {
+    display: flex;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.1); /* White background with 90% transparency */
+    border: 1px solid black; /* Black border */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Black drop shadow */
+    padding: 10px 15px; /* Padding inside the button */
+    font-size: 14px; /* Font size for button text */
+    color: white; /* Text color */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 10px; /* Rounded corners */
+    font-family: Pepeonton;
+}
+
+.double-button .button-left,
+.double-button .button-right {
+    display: flex;
+    align-items: center;
+}
+
+.double-button .button-left {
+    margin-right: 10px; /* Space between left and right sides */
+}
+
+.double-button .button-right {
+    display: flex;
+    align-items: center;
+}
+
+.double-button .button-icon {
+    width: 20px; /* Size of the icon */
+    height: 20px;
+    margin-right: 10px; /* Space between icon and text */
+}
+
+.double-button .button-icon-small {
+    width: 15px; /* Size of the smaller icon */
+    height: 15px;
+}
+
+.boost-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 150px - 50px - 30px);
+    width: 100%;
+    flex-direction: column;
+}
+
+/* earn tab styling */
+/* Header Icon in Earn Tab */
+.header-icon {
+    text-align: center;
+}
+
+.large-icon {
+    width: 80px; /* Size of the large icon */
+    height: 80px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Drop shadow */
+}
+
+.header-text {
+    font-size: 24px; /* Font size for the text */
+    color: white; /* Text color */
+    margin-top: 10px; /* Space between icon and text */
+}
+
+/* Content Sections in Earn Tab */
+.content-section {
+    margin-bottom: 20px; /* Space between sections */
+    width: 100%;
+}
+
+.section-header {
+    font-size: 16px; /* Size for headers */
+    color: white; /* White text color */
+    font-weight: bold; /* Bold text */
+    margin-bottom: 20px; /* Space below the header */
+}
+
+/* Button Group Styles */
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between buttons */
+}
+
+/* Double Button Styles */
+.double-button {
+    display: flex;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.1); /* White background with 90% transparency */
+    border: 1px solid black; /* Black border */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Black drop shadow */
+    padding: 15px 15px; /* Padding inside the button */
+    font-size: 14px; /* Font size for button text */
+    color: white; /* Text color */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 10px; /* Rounded corners */
+    font-family: Pepeonton;
+}
+
+.double-button .button-left,
+.double-button .button-right {
+    display: flex;
+    align-items: center;
+}
+
+.double-button .button-left {
+    margin-right: 10px; /* Space between left and right sides */
+}
+
+.double-button .button-right {
+    display: flex;
+    align-items: center;
+}
+
+.double-button .button-icon {
+    width: 20px; /* Size of the icon */
+    height: 20px;
+    margin-right: 10px; /* Space between icon and text */
+}
+
+.double-button .button-icon-small {
+    width: 15px; /* Size of the smaller icon */
+    height: 15px;
+}
+
+#earn-tab .tab-header {
+    justify-content: center;
+}
+
+.earn-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: calc(100vh - 100px);
+    width: 100%;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.content-section {
+    margin-bottom: 20px; /* Ensure margin is not too large */
+}
+
+/* Wallet Tab Styling */
+
+/* Header Icon in Wallet Tab */
+#wallet-tab .tab-header {
+    justify-content: center; /* Center content in the header */
+}
+
+.large-icon {
+    width: 80px; /* Size of the large icon */
+    height: 80px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6); /* Drop shadow */
+}
+
+.header-text {
+    font-size: 24px; /* Font size for the text */
+    color: white; /* Text color */
+    margin-top: 10px; /* Space between icon and text */
+}
+
+/* Content Section in Wallet Tab */
+#wallet-tab .tab-content {
+    padding: 20px;
+    align-items: center; /* Center content in the main area */
+}
+
+.section-header {
+    font-size: 14px; /* Font size for the header */
+    color: white; /* Text color */
+    margin-bottom: 20px; /* Space below the header */
+}
+
+
+
+.double-button .button-left,
+.double-button .button-right {
+    display: flex;
+    align-items: center;
+}
+
+.double-button .button-left {
+    margin-right: 10px; /* Space between left and right sides */
+}
+
+.double-button .button-icon {
+    width: 20px; /* Size of the icon */
+    height: 20px;
+    margin-right: 10px; /* Space between icon and text */
+}
